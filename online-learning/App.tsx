@@ -1,8 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import { MainLayout } from "./src/screens";
 
-const Stack = createNativeStackNavigator();
+import type { MainStackParamList } from "./src/@types/Stacks";
+
+const Stack = createNativeStackNavigator<MainStackParamList>();
 
 const App = () => {
   return (
