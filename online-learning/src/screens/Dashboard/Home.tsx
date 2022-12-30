@@ -160,7 +160,7 @@ const Home = () => {
           listKey="PopularCourses"
           scrollEnabled={false}
           keyExtractor={(item) => `PopularCourses-${item.id}`}
-          contentContainerStyle={{ marginTop: 12, paddingHorizontal: 12 }}
+          contentContainerStyle={{ marginTop: 12, paddingHorizontal: 16 }}
           renderItem={({ item, index }) => (
             <HorizontalCourseCard
               course={item}
