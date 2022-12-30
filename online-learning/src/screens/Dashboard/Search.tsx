@@ -17,6 +17,11 @@ import { icons, dummyData, SIZES } from "../../constants";
 const Search = () => {
   const scrollViewRef = useRef();
 
+  const scrollY = useSharedValue(0);
+  const onScroll = useAnimatedScrollHandler((event) => {
+    scrollY.value = event.contentOffset.y;
+  });
+
   function renderTopSearches() {
     return (
       <View className="mt-2">
@@ -51,7 +56,7 @@ const Search = () => {
 
   function renderBrowseCategories() {
     return (
-      <View className="mt-4">
+      <View className="mt-8">
         <Text className="mx-6 font-semibold text-lg ">Browse Categories</Text>
         <FlatList
           data={dummyData.categories}
@@ -66,13 +71,62 @@ const Search = () => {
               containerStyle={{
                 height: 130,
                 width: (SIZES.width - 22 * 2 - 6) / 2,
-                marginTop: 16,
+                marginTop: 24,
                 marginLeft: (index + 1) % 2 === 0 ? 16 : 16,
               }}
             />
           )}
         />
       </View>
+    );
+  }
+
+  function renderSearchBar() {
+    const inputRange = [0, 55];
+
+    const searchBarAnimatedStyle = useAnimatedStyle(() => {
+      return {
+        height: interpolate(
+          scrollY.value,
+          inputRange,
+          [55, 0],
+          Extrapolate.CLAMP
+        ),
+        opacity: interpolate(
+          scrollY.value,
+          inputRange,
+          [1, 0],
+          Extrapolate.CLAMP
+        ),
+      };
+    });
+
+    return (
+      <Animated.View
+        className="absolute top-12 left-0 right-0 px-4 h-12"
+        style={[{}, searchBarAnimatedStyle]}
+      >
+        <Shadow>
+          <View
+            className="flex-1 flex-row items-center px-4 bg-white"
+            style={{ width: SIZES.width - 18 * 2, borderRadius: 12 }}
+          >
+            <Image
+              source={icons.search}
+              style={{
+                height: 25,
+                width: 25,
+                tintColor: "#808080",
+              }}
+            />
+
+            <TextInput
+              className="flex-1 ml-2 text-gray-500"
+              placeholder="Search for Topics, Courses and Educators"
+            />
+          </View>
+        </Shadow>
+      </Animated.View>
     );
   }
 
@@ -87,6 +141,19 @@ const Search = () => {
         showVerticalScrollIndicator={false}
         scrollEventThrottle={16}
         keyboardDismissMode="on-drag"
+        onScroll={onScroll}
+        onScrollEndDrag={(event) => {
+          if (
+            event.nativeEvent.contentOffset.y > 10 &&
+            event.nativeEvent.contentOffset.y < 50
+          ) {
+            scrollViewRef.current?.scrollTo({
+              x: 0,
+              y: 60,
+              animated: true,
+            });
+          }
+        }}
       >
         {/* Top Searches */}
         {renderTopSearches()}
@@ -94,6 +161,9 @@ const Search = () => {
         {/* Browse Categories */}
         {renderBrowseCategories()}
       </Animated.ScrollView>
+
+      {/* Search Bar */}
+      {renderSearchBar()}
     </View>
   );
 };
