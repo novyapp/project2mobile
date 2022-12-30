@@ -11,6 +11,9 @@ const CategoryCard = ({ category, containerStyle }) => {
         resizeMode="cover"
         style={{ ...containerStyle }}
         className="justify-end px-4 py-2 w-[200px] h-[150px]"
+        imageStyle={{
+          borderRadius: 8,
+        }}
       >
         <Text className="text-white font-semibold text-lg pb-3">
           {category?.title}
