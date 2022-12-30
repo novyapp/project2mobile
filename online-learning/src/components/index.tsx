@@ -5,6 +5,7 @@ import IconLabel from "./IconLabel";
 import LineDevider from "./LineDevider";
 import CategoryCard from "./CategoryCard";
 import HorizontalCourseCard from "./HorizontalCourseCard";
+import ProgressBar from "./ProgressBar";
 
 export {
   IconButtom,
@@ -14,4 +15,5 @@ export {
   CategoryCard,
   VerticalCourseCard,
   HorizontalCourseCard,
+  ProgressBar,
 };
