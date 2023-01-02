@@ -5,7 +5,6 @@ import React, { useRef } from "react";
 import Slide, { SLIDE_HEIGHT } from "./Slide";
 import Animated, {
   interpolateColor,
-  multiply,
   useAnimatedScrollHandler,
   useAnimatedStyle,
   useDerivedValue,
@@ -13,6 +12,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { ScrollView } from "react-native-gesture-handler";
 import SubSlide from "./SubSlide";
+import Dot from "./Dot";
 
 const BORDER_RADIUS = 75;
 const { width, height } = Dimensions.get("window");
@@ -28,9 +28,16 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   footerContent: {
-    flexDirection: "row",
+    flex: 1,
     backgroundColor: "white",
     borderTopLeftRadius: BORDER_RADIUS,
+  },
+  pagination: {
+    ...StyleSheet.absoluteFillObject,
+    flexDirection: "row",
+    height: BORDER_RADIUS,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
@@ -41,6 +48,7 @@ const slides = [
     description:
       "Confused about your outfit? Dont worry! Find the best outfit here!",
     color: "#BFEAF5",
+    picture: require("./assets/1.png"),
   },
   {
     title: "Playful",
@@ -48,6 +56,7 @@ const slides = [
     description:
       "Hating the clothes in your wardobe? Explore hundrets of outfit ideas",
     color: "#BEECC4",
+    picture: require("./assets/2.png"),
   },
   {
     title: "Excentric",
@@ -55,6 +64,7 @@ const slides = [
     description:
       "Create your individual & unique style and look amazing everyday",
     color: "#FFE4D9",
+    picture: require("./assets/3.png"),
   },
   {
     title: "Funky",
@@ -62,6 +72,7 @@ const slides = [
     description:
       "Discover the latest trends in fashion and explore your personality",
     color: "#FFDDDD",
+    picture: require("./assets/4.png"),
   },
 ];
 
@@ -117,32 +128,41 @@ const Onboarding = () => {
       {/* Footer */}
       <View style={styles.footer}>
         <Animated.View style={[StyleSheet.absoluteFillObject, background]} />
-        <Animated.View
-          style={[
-            {
-              width: width * slides.length,
-              flexDirection: "row",
-              backgroundColor: "white",
-              borderTopLeftRadius: BORDER_RADIUS,
-              flex: 1,
-            },
-            footerStyle,
-          ]}
-        >
-          {slides.map(({ subtitle, description }, index) => (
-            <SubSlide
-              onPress={() => {
-                scroll.current?.scrollTo({
-                  x: width * (index + 1),
-                  animated: true,
-                });
-              }}
-              key={index}
-              last={index === slides.length - 1}
-              {...{ subtitle, description }}
-            />
-          ))}
-        </Animated.View>
+
+        <View style={styles.footerContent}>
+          {/* Pagination */}
+          <View style={styles.pagination}>
+            {slides.map((_, index) => (
+              <Dot key={index} currentIndex={currentIndex} {...{ index }} />
+            ))}
+          </View>
+
+          {/* Subtitle and Description */}
+          <Animated.View
+            style={[
+              {
+                flex: 1,
+                flexDirection: "row",
+                width: width * slides.length,
+              },
+              footerStyle,
+            ]}
+          >
+            {slides.map(({ subtitle, description }, index) => (
+              <SubSlide
+                onPress={() => {
+                  scroll.current?.scrollTo({
+                    x: width * (index + 1),
+                    animated: true,
+                  });
+                }}
+                key={index}
+                last={index === slides.length - 1}
+                {...{ subtitle, description }}
+              />
+            ))}
+          </Animated.View>
+        </View>
       </View>
     </View>
   );
