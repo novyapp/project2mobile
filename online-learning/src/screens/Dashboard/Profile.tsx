@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -13,10 +13,16 @@ import {
   TextButton,
   LineDevider,
   ProgressBar,
+  ProfileValue,
+  ProfileRadioButton,
 } from "../../components";
+
 import { SIZES, icons, images } from "../../constants";
 
 const Profile = () => {
+  const [newCourseNotification, setNewCourseNotification] = useState(false);
+  const [studyReminder, setStudyReminder] = useState(false);
+
   function renderHeader() {
     return (
       <View className="flex-row mt-12 px-5 justify-between">
@@ -89,8 +95,76 @@ const Profile = () => {
     );
   }
 
+  function renderProfileSection1() {
+    return (
+      <View style={styles.profileSectionContainer}>
+        <ProfileValue
+          icon={icons.profile}
+          label="Name"
+          value="NovyApp"
+          onPress={undefined}
+        />
+        <LineDevider lineStyle={undefined} />
+
+        <ProfileValue
+          icon={icons.email}
+          label="Email"
+          value="info@novypp.com"
+          onPress={undefined}
+        />
+        <LineDevider lineStyle={undefined} />
+
+        <ProfileValue
+          icon={icons.password}
+          label="Password"
+          value="*******"
+          onPress={undefined}
+        />
+        <LineDevider lineStyle={undefined} />
+
+        <ProfileValue
+          icon={icons.call}
+          label="Contact Number"
+          value="+48 123 123 123"
+          onPress={undefined}
+        />
+      </View>
+    );
+  }
+
+  function renderProfileSection2() {
+    return (
+      <View style={styles.profileSectionContainer}>
+        <ProfileValue
+          icon={icons.star_1}
+          value="Pages"
+          label={undefined}
+          onPress={undefined}
+        />
+        <LineDevider lineStyle={undefined} />
+        <ProfileRadioButton
+          icon={icons.new_icon}
+          label="New Course Notifications"
+          isSelected={newCourseNotification}
+          onPress={() => {
+            setNewCourseNotification(!newCourseNotification);
+          }}
+        />
+        <LineDevider lineStyle={undefined} />
+        <ProfileRadioButton
+          icon={icons.reminder}
+          label="Study Reminder"
+          isSelected={studyReminder}
+          onPress={() => {
+            setStudyReminder(!studyReminder);
+          }}
+        />
+      </View>
+    );
+  }
+
   return (
-    <View className="flex-1 bg-white">
+    <View className="flex-1 bg-white mb-24">
       {/* Header */}
       {renderHeader()}
 
@@ -102,9 +176,26 @@ const Profile = () => {
       >
         {/* Profile Card */}
         {renderProfileCard()}
+
+        {/* Profile Section 1 */}
+        {renderProfileSection1()}
+
+        {/* Profile Section 2 */}
+        {renderProfileSection2()}
       </ScrollView>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  profileSectionContainer: {
+    marginTop: 12,
+
+    paddingHorizontal: 16,
+    borderWidth: 1,
+    borderRadius: 8,
+    borderColor: "#909090",
+  },
+});
 
 export default Profile;
