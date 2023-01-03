@@ -1,6 +1,7 @@
 import { Image, Dimensions } from "react-native";
 import React from "react";
 import { Box, Button, Text, theme } from "../../components";
+import { Routes, StackNavigationProps } from "../../components/Navigation";
 
 const { width } = Dimensions.get("window");
 
@@ -12,7 +13,7 @@ const picture = {
 
 export const assets = [picture.src];
 
-const Welcome = () => {
+const Welcome = ({ navigation }: StackNavigationProps<Routes, "Welcome">) => {
   return (
     <Box flex={1} backgroundColor="white">
       <Box
@@ -52,9 +53,24 @@ const Welcome = () => {
             <Text variant="body" textAlign="center">
               Login to your account below or signuo fir an amazing experience
             </Text>
-            <Button variant="primary" label="Hae an account? Login" />
-            <Button label="Join us its Free" />
-            <Button variant="transparent" label="Forgot password?" />
+            <Button
+              variant="primary"
+              label="Hae an account? Login"
+              onPress={() => navigation.navigate("Login")}
+            />
+            <Button
+              label="Join us its Free"
+              onPress={function (): void {
+                throw new Error("Function not implemented.");
+              }}
+            />
+            <Button
+              variant="transparent"
+              label="Forgot password?"
+              onPress={function (): void {
+                throw new Error("Function not implemented.");
+              }}
+            />
           </Box>
         </Box>
       </Box>
