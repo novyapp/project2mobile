@@ -4,9 +4,11 @@ const theme = createTheme({
   colors: {
     primary: "#2CB9B0",
     text: "#0C0D34",
+    button: "#0C0D34",
     body: "rgba(12,13,52, 0.7)",
     white: "white",
     grey: "rgba(12,13,52, 0.05)",
+    lightGrey: "#F4F0EF",
   },
   spacing: {
     s: 8,
