@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Dimensions } from "react-native";
 import React, { ReactNode } from "react";
-import theme, { Box } from "./theme";
+import { Box, useTheme } from "./theme";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 interface ContainerProps {
@@ -16,6 +16,7 @@ export const assets = [require("./assets/patterns/1.png")];
 
 const Container = ({ children, footer }: ContainerProps) => {
   const insests = useSafeAreaInsets();
+  const theme = useTheme();
 
   return (
     <Box flex={1} backgroundColor="secondary">

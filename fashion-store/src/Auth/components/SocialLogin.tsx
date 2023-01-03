@@ -1,8 +1,6 @@
 import React, { ReactNode } from "react";
 import Svg, { Path } from "react-native-svg";
-import { Box, theme } from "../../components";
-
-const SIZE = theme.borderRadii.l * 2;
+import { Box, useTheme } from "../../components";
 
 const Facebook = () => (
   <Svg height={24} width={12} viewBox="88.428 12.828 107.543 207.085">
@@ -53,6 +51,8 @@ interface SocialIconProps {
 }
 
 const SocialIcon = ({ children }: SocialIconProps) => {
+  const theme = useTheme();
+  const SIZE = theme.borderRadii.l * 2;
   return (
     <Box
       backgroundColor="white"

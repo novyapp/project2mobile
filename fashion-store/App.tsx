@@ -2,7 +2,8 @@ import * as React from "react";
 import { ThemeProvider } from "@shopify/restyle";
 
 import { assets as authAssets, AuthNavigator } from "./src/Auth";
-import { LoadAssets, theme } from "./src/components";
+import { LoadAssets } from "./src/components";
+import { theme } from "./src/components/theme";
 
 import { SafeAreaProvider } from "react-native-safe-area-context";
 

@@ -1,9 +1,6 @@
 import { View, StyleSheet, Dimensions, Image } from "react-native";
-
 import React, { useRef } from "react";
-
 import Slide, { SLIDE_HEIGHT } from "./Slide";
-
 import Animated, {
   Extrapolate,
   interpolate,
@@ -16,12 +13,12 @@ import Animated, {
 
 import SubSlide from "./SubSlide";
 import Dot from "./Dot";
-import { theme } from "../../components";
+import { Theme, useTheme, makeStyles } from "../../components";
 import { Routes, StackNavigationProps } from "../../components/Navigation";
 
 const { width } = Dimensions.get("window");
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme: Theme) => ({
   container: { flex: 1, backgroundColor: "white" },
   slider: {
     height: SLIDE_HEIGHT,
@@ -50,7 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-});
+}));
 
 const slides = [
   {
@@ -92,6 +89,8 @@ export const assets = slides.map((slide) => slide.picture.src);
 const Onboarding = ({
   navigation,
 }: StackNavigationProps<Routes, "Onboarding">) => {
+  const styles = useStyles();
+  const theme = useTheme();
   const x = useSharedValue(0);
   const scroll = useRef<Animated.ScrollView>(null);
 
