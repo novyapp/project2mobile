@@ -10,12 +10,12 @@ import Animated, {
   useDerivedValue,
   useSharedValue,
 } from "react-native-reanimated";
-import { ScrollView } from "react-native-gesture-handler";
+
 import SubSlide from "./SubSlide";
 import Dot from "./Dot";
 
 const BORDER_RADIUS = 75;
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "white" },

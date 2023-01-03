@@ -1,7 +1,7 @@
 import * as React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { Onboarding } from "./src/Auth/Onboarding";
+import { Onboarding } from "./src/Auth";
 import { LoadAssets } from "./src/components";
 
 const fonts = {
