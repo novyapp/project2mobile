@@ -2,6 +2,7 @@ import { Image, Dimensions } from "react-native";
 import React from "react";
 import { Box, Button, Text, useTheme } from "../components";
 import { Routes, StackNavigationProps } from "../components/Navigation";
+import { BorderlessButton } from "react-native-gesture-handler";
 
 const { width } = Dimensions.get("window");
 
@@ -61,17 +62,15 @@ const Welcome = ({ navigation }: StackNavigationProps<Routes, "Welcome">) => {
             />
             <Button
               label="Join us its Free"
-              onPress={function (): void {
-                throw new Error("Function not implemented.");
-              }}
+              onPress={() => navigation.navigate("SignUp")}
             />
-            <Button
-              variant="transparent"
-              label="Forgot password?"
-              onPress={function (): void {
-                throw new Error("Function not implemented.");
-              }}
-            />
+            <BorderlessButton
+              onPress={() => navigation.navigate("ForgotPassword")}
+            >
+              <Text variant="button" color="secondary">
+                Forgot password?
+              </Text>
+            </BorderlessButton>
           </Box>
         </Box>
       </Box>
