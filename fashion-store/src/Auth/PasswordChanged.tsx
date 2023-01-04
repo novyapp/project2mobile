@@ -16,7 +16,7 @@ const PasswordChanged = ({
     </Box>
   );
   return (
-    <Container {...{ footer }}>
+    <Container pattern={0} {...{ footer }}>
       <Box padding="xl" justifyContent="center" flex={1} alignItems="center">
         <Box
           height={SIZE}

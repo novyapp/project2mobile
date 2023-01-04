@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { TextInput as RNTextInput } from "react-native";
 import { Routes, StackNavigationProps } from "../components/Navigation";
 import { Box, Button, Container, Text } from "../components";
-import TextInput from "./components/Forms/TextInput";
+import TextInput from "../components/Forms/TextInput";
 import Footer from "./components/Footer";
 
 const SignUpSchema = Yup.object().shape({
@@ -41,7 +41,7 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
   );
 
   return (
-    <Container {...{ footer }}>
+    <Container pattern={1} {...{ footer }}>
       <Box padding="xl">
         <Text
           variant="title1"

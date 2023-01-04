@@ -5,8 +5,8 @@ import { TextInput as RNTextInput } from "react-native";
 
 import { Routes, StackNavigationProps } from "../components/Navigation";
 import { Box, Button, Container, Text } from "../components";
-import TextInput from "./components/Forms/TextInput";
-import Checkbox from "./components/Forms/Checkbox";
+import TextInput from "../components/Forms/TextInput";
+import Checkbox from "../components/Forms/Checkbox";
 import Footer from "./components/Footer";
 
 const LoginSchema = Yup.object().shape({
@@ -44,7 +44,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
   });
 
   return (
-    <Container {...{ footer }}>
+    <Container pattern={0} {...{ footer }}>
       <Box padding="xl">
         <Text variant="title1" textAlign="center" marginBottom="l">
           Welcome back
