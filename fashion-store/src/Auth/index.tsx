@@ -8,6 +8,9 @@ import SignUp, { assets as SignUpAssets } from "./SignUp";
 import ForgotPassword, {
   assets as ForgotPasswordAssets,
 } from "./ForgotPassword";
+import PasswordChanged, {
+  assets as PasswordChangedAssets,
+} from "./PasswordChanged";
 
 export const assets = [
   OnboardingAssets,
@@ -15,6 +18,7 @@ export const assets = [
   LoginAssets,
   SignUpAssets,
   ForgotPasswordAssets,
+  PasswordChangedAssets,
 ];
 
 const AuthStack = createStackNavigator<Routes>();
@@ -30,6 +34,7 @@ export const AuthNavigator = () => {
       <AuthStack.Screen name="Login" component={Login} />
       <AuthStack.Screen name="SignUp" component={SignUp} />
       <AuthStack.Screen name="ForgotPassword" component={ForgotPassword} />
+      <AuthStack.Screen name="PasswordChanged" component={PasswordChanged} />
     </AuthStack.Navigator>
   );
 };

@@ -29,7 +29,7 @@ const ForgotPassword = ({
     {
       validationSchema: ForgotPasswordSchema,
       initialValues: { email: "" },
-      onSubmit: (values) => console.log(values),
+      onSubmit: () => navigation.navigate("PasswordChanged"),
     }
   );
 
