@@ -4,9 +4,18 @@ import { Routes } from "../components/Navigation";
 import Login, { assets as LoginAssets } from "./Login";
 import Onboarding, { assets as OnboardingAssets } from "./Onboarding";
 import Welcome, { assets as WelcomeAssets } from "./Welcome";
-export { default as Onboarding } from "./Onboarding";
-export { default as Welcome } from "./Welcome";
-export const assets = [OnboardingAssets, WelcomeAssets, LoginAssets];
+import SignUp, { assets as SignUpAssets } from "./SignUp";
+import ForgotPassword, {
+  assets as ForgotPasswordAssets,
+} from "./ForgotPassword";
+
+export const assets = [
+  OnboardingAssets,
+  WelcomeAssets,
+  LoginAssets,
+  SignUpAssets,
+  ForgotPasswordAssets,
+];
 
 const AuthStack = createStackNavigator<Routes>();
 export const AuthNavigator = () => {
@@ -19,6 +28,8 @@ export const AuthNavigator = () => {
       <AuthStack.Screen name="Onboarding" component={Onboarding} />
       <AuthStack.Screen name="Welcome" component={Welcome} />
       <AuthStack.Screen name="Login" component={Login} />
+      <AuthStack.Screen name="SignUp" component={SignUp} />
+      <AuthStack.Screen name="ForgotPassword" component={ForgotPassword} />
     </AuthStack.Navigator>
   );
 };

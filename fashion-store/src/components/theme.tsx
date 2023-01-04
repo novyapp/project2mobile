@@ -33,6 +33,12 @@ export const theme = createTheme({
     xl: 75,
   },
   textVariants: {
+    defaults: {
+      fontFamily: "SFProDisplay-Regular",
+      fontSize: 16,
+      lineHeight: 24,
+      color: "body",
+    },
     hero: {
       fontSize: 80,
       fontFamily: "SFProDisplay-Bold",
@@ -43,6 +49,7 @@ export const theme = createTheme({
     title1: {
       fontFamily: "SFProDisplay-Semibold",
       fontSize: 28,
+      lineHeight: 30,
       color: "secondary",
     },
     title2: {
