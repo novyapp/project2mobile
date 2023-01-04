@@ -14,7 +14,7 @@ import Animated, {
 import SubSlide from "./SubSlide";
 import Dot from "./Dot";
 import { Theme, useTheme, makeStyles } from "../../components";
-import { Routes, StackNavigationProps } from "../../components/Navigation";
+import { AuthNavigationProps } from "../../components/Navigation";
 
 const { width } = Dimensions.get("window");
 
@@ -86,9 +86,7 @@ const slides = [
 
 export const assets = slides.map((slide) => slide.picture.src);
 
-const Onboarding = ({
-  navigation,
-}: StackNavigationProps<Routes, "Onboarding">) => {
+const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding">) => {
   const styles = useStyles();
   const theme = useTheme();
   const x = useSharedValue(0);

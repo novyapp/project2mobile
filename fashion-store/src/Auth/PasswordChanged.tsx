@@ -1,7 +1,5 @@
 import React from "react";
-
-import { Feather as Icon } from "@expo/vector-icons";
-import { Routes, StackNavigationProps } from "../components/Navigation";
+import { AuthNavigationProps } from "../components/Navigation";
 import {
   Box,
   Button,
@@ -16,7 +14,7 @@ const SIZE = 80;
 
 const PasswordChanged = ({
   navigation,
-}: StackNavigationProps<Routes, "PasswordChanged">) => {
+}: AuthNavigationProps<"PasswordChanged">) => {
   const footer = (
     <Box flexDirection="row" justifyContent="center" marginBottom="m">
       <RoundedIconButton
@@ -30,35 +28,29 @@ const PasswordChanged = ({
   );
   return (
     <Container pattern={0} {...{ footer }}>
-      <Box
-        padding="xl"
-        justifyContent="center"
-        flex={1}
-        alignItems="center"
-        marginBottom="l"
-      >
+      <Box alignSelf="center">
         <RoundedIcon
           name="check"
           size={SIZE}
           backgroundColor="primaryLight"
           color="primary"
         />
+      </Box>
 
-        <Text variant="title1" textAlign="center" marginVertical="l">
-          Yoour password was successfully changed
-        </Text>
-        <Text variant="body" textAlign="center" marginBottom="l">
-          Close this windows and login again
-        </Text>
+      <Text variant="title1" textAlign="center" marginVertical="l">
+        Yoour password was successfully changed
+      </Text>
+      <Text variant="body" textAlign="center" marginBottom="l">
+        Close this windows and login again
+      </Text>
 
-        <Box>
-          <Box alignItems="center" marginTop="m">
-            <Button
-              variant="primary"
-              label="Login"
-              onPress={() => navigation.navigate("Login")}
-            ></Button>
-          </Box>
+      <Box>
+        <Box alignItems="center" marginTop="m">
+          <Button
+            variant="primary"
+            label="Login"
+            onPress={() => navigation.navigate("Login")}
+          ></Button>
         </Box>
       </Box>
     </Container>

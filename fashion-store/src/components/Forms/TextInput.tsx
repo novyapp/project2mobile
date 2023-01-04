@@ -49,16 +49,6 @@ const TextInput = forwardRef<RNTextInput, TextInputProps>(
             backgroundColor={!error ? "primary" : "danger"}
             color="white"
           />
-          // <Box
-          //   height={SIZE}
-          //   width={SIZE}
-          //   justifyContent="center"
-          //   alignItems="center"
-          //   backgroundColor={!error ? "primary" : "danger"}
-          //   style={{ borderRadius: SIZE / 2 }}
-          // >
-          //   <Icon name={!error ? "check" : "x"} size={12} color="white" />
-          // </Box>
         )}
       </Box>
     );

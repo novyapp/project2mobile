@@ -18,6 +18,10 @@ export const theme = createTheme({
     grey: "rgba(12,13,52, 0.05)",
     lightGrey: "#F4F0EF",
     darkGrey: "#8A8D90",
+    orange: "orange",
+    yellow: "yellow",
+    pink: "pink",
+    violet: "violet",
   },
   spacing: {
     xs: 4,

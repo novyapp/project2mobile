@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { Routes } from "../components/Navigation";
+import { AuthRoutes } from "../components/Navigation";
 
 import Login, { assets as LoginAssets } from "./Login";
 import Onboarding, { assets as OnboardingAssets } from "./Onboarding";
@@ -21,7 +21,7 @@ export const assets = [
   PasswordChangedAssets,
 ];
 
-const AuthStack = createStackNavigator<Routes>();
+const AuthStack = createStackNavigator<AuthRoutes>();
 export const AuthNavigator = () => {
   return (
     <AuthStack.Navigator

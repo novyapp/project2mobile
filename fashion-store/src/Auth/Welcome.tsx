@@ -1,7 +1,7 @@
 import { Image, Dimensions } from "react-native";
 import React from "react";
 import { Box, Button, Text, useTheme } from "../components";
-import { Routes, StackNavigationProps } from "../components/Navigation";
+import { AuthNavigationProps } from "../components/Navigation";
 import { BorderlessButton } from "react-native-gesture-handler";
 
 const { width } = Dimensions.get("window");
@@ -14,7 +14,7 @@ const picture = {
 
 export const assets = [picture.src];
 
-const Welcome = ({ navigation }: StackNavigationProps<Routes, "Welcome">) => {
+const Welcome = ({ navigation }: AuthNavigationProps<"Welcome">) => {
   const theme = useTheme();
   return (
     <Box flex={1} backgroundColor="white">
