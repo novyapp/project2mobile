@@ -2,7 +2,7 @@ import React from "react";
 import { Feather as Icon } from "@expo/vector-icons";
 import { Box, Text, Theme } from "./theme";
 
-interface RoundedIconProps {
+export interface RoundedIconProps {
   name: keyof typeof Icon.glyphMap;
   size: number;
   color: keyof Theme["colors"];
@@ -34,12 +34,7 @@ const RoundedIcon = ({
           lineHeight: iconSize,
         }}
       >
-        <Icon
-          {...{ name }}
-          size={iconSize}
-          color="white"
-          style={{ textAlign: "center" }}
-        />
+        <Icon size={iconSize} {...{ name }} />
       </Text>
     </Box>
   );
