@@ -14,31 +14,28 @@ interface HeaderProps {
     icon: keyof typeof Icon.glyphMap;
     onPress: () => void;
   };
+  dark: boolean;
 }
 
-const Header = ({ title, left, right }: HeaderProps) => {
+const Header = ({ title, left, right, dark }: HeaderProps) => {
   const insets = useSafeAreaInsets();
+  const color = dark ? "white" : "secondary";
+  const backgroundColor = dark ? "secondary" : "lightGrey";
 
   return (
     <Box
-      position="absolute"
-      top={0}
-      bottom={0}
-      left={0}
-      right={0}
-      borderBottomRightRadius="xl"
-      backgroundColor="drewer"
       flexDirection="row"
       justifyContent="space-between"
+      alignItems="center"
       paddingHorizontal="m"
+      {...{ color }}
       style={{ paddingTop: insets.top }}
     >
       <RoundedIconButton
         iconRatio={0.5}
-        size={24}
+        size={44}
         name={left.icon}
-        color="white"
-        backgroundColor="secondary"
+        {...{ color, backgroundColor }}
         onPress={left.onPress}
       />
       <Text variant="header" color="secondary">
@@ -46,14 +43,17 @@ const Header = ({ title, left, right }: HeaderProps) => {
       </Text>
       <RoundedIconButton
         iconRatio={0.5}
-        size={24}
+        size={44}
         name={right.icon}
-        color="white"
-        backgroundColor="secondary"
         onPress={right.onPress}
+        {...{ color, backgroundColor }}
       />
     </Box>
   );
+};
+
+Header.defaultProps = {
+  dark: false,
 };
 
 export default Header;

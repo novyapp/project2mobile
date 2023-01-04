@@ -1,15 +1,8 @@
 import React from "react";
-import { DrawerContentComponentProps } from "@react-navigation/drawer";
-import {
-  Box,
-  Header,
-  RoundedIconButton,
-  Text,
-  useTheme,
-} from "../../components";
-import { Dimensions, Image, StyleSheet } from "react-native";
+import { Box, Header, Text, useTheme } from "../../components";
+import { Dimensions, Image } from "react-native";
 import DrawerItem, { DrawerItemProps } from "./DrawerItem";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { DrawerActions, useNavigation } from "@react-navigation/native";
 
 export const assets = [require("../../components/assets/patterns/1.png")];
 
@@ -57,9 +50,9 @@ const items: DrawerItemProps[] = [
   },
 ];
 
-const DrawerContent = (props: DrawerContentComponentProps) => {
+const DrawerContent = () => {
+  const navigation = useNavigation();
   const theme = useTheme();
-  const insets = useSafeAreaInsets();
 
   return (
     <Box flex={1}>
@@ -75,8 +68,12 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
         >
           <Header
             title="menue"
-            left={{ icon: "x", onPress: () => true }}
+            left={{
+              icon: "x",
+              onPress: () => navigation.dispatch(DrawerActions.closeDrawer()),
+            }}
             right={{ icon: "shopping-bag", onPress: () => true }}
+            dark
           />
         </Box>
       </Box>
