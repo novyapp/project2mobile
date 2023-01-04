@@ -22,6 +22,7 @@ export const theme = createTheme({
     yellow: "yellow",
     pink: "pink",
     violet: "violet",
+    drewer: "#f7c902",
   },
   spacing: {
     xs: 4,
@@ -72,6 +73,12 @@ export const theme = createTheme({
     button: {
       fontFamily: "SFProDisplay-Medium",
       fontSize: 15,
+    },
+    header: {
+      fontFamily: "SFProDisplay-Semibold",
+      fontSize: 12,
+      lineHeight: 24,
+      color: "secondary",
     },
   },
   breakpoints: {

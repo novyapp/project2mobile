@@ -1,9 +1,17 @@
 import React from "react";
 import { DrawerContentComponentProps } from "@react-navigation/drawer";
-import { Box, RoundedIconButton, Text, useTheme } from "../../components";
+import {
+  Box,
+  Header,
+  RoundedIconButton,
+  Text,
+  useTheme,
+} from "../../components";
 import { Dimensions, Image, StyleSheet } from "react-native";
 import DrawerItem, { DrawerItemProps } from "./DrawerItem";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+
+export const assets = [require("../../components/assets/patterns/1.png")];
 
 const { width } = Dimensions.get("window");
 export const DRAWER_WIDTH = width * 0.8;
@@ -63,32 +71,18 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
           left={0}
           right={0}
           borderBottomRightRadius="xl"
-          backgroundColor="secondary"
-          flexDirection="row"
-          justifyContent="space-between"
-          paddingHorizontal="m"
-          style={{ paddingTop: insets.top }}
+          backgroundColor="drewer"
         >
-          <RoundedIconButton
-            size={24}
-            name="x"
-            color="white"
-            backgroundColor="secondary"
-            onPress={() => true}
-          />
-          <Text color="white">MY PROFILE</Text>
-          <RoundedIconButton
-            size={24}
-            name="shopping-bag"
-            color="white"
-            backgroundColor="secondary"
-            onPress={() => true}
+          <Header
+            title="menue"
+            left={{ icon: "x", onPress: () => true }}
+            right={{ icon: "shopping-bag", onPress: () => true }}
           />
         </Box>
       </Box>
       <Box flex={0.8}>
-        <Box flex={1} backgroundColor="secondary" />
-        <Box flex={1} backgroundColor="primary" />
+        <Box flex={1} backgroundColor="drewer" />
+
         <Box
           backgroundColor="white"
           position="absolute"
@@ -131,15 +125,11 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
         overflow="hidden"
       >
         <Image
-          source={require("../../components/assets/patterns/1.png")}
+          source={assets[0]}
           style={{
-            ...StyleSheet.absoluteFillObject,
             width: DRAWER_WIDTH,
             height,
-            position: "absolute",
-            left: 0,
-            right: 0,
-            top: -height * (1 - 0.61),
+
             borderTopLeftRadius: theme.borderRadii.xl,
           }}
         />

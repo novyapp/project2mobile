@@ -10,7 +10,7 @@ export interface DrawerItemProps {
   label: string;
 }
 
-const DrawerItem = ({ icon, color, screen, label }: DrawerItemProps) => {
+const DrawerItem = ({ icon, color, label }: DrawerItemProps) => {
   const theme = useTheme();
 
   return (
