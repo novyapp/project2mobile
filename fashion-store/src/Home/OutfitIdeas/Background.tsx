@@ -1,14 +1,8 @@
-import { Dimensions, Image, StyleSheet } from "react-native";
+import { Image, StyleSheet } from "react-native";
 import React from "react";
 import { Box, useTheme } from "../../components";
 
-interface BackgroundProps {}
-
-const { width, height: wHeight } = Dimensions.get("window");
-const aspectRatio = 8000 / 12000;
-const height = width * aspectRatio;
-
-const Background = (props: BackgroundProps) => {
+const Background = () => {
   const theme = useTheme();
 
   return (
