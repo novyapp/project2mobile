@@ -2,6 +2,7 @@ import { Image } from "react-native";
 import React from "react";
 import { Box, SIZES } from "../../constants";
 import { LinearGradient } from "expo-linear-gradient";
+import { TextInput } from "../../components";
 
 type Props = {};
 
@@ -35,6 +36,10 @@ const Login = (props: Props) => {
               height: 100,
             }}
           />
+        </Box>
+        <Box>
+          <TextInput placeholder="" icon="mail" />
+          <TextInput placeholder="" icon="lock" />
         </Box>
       </LinearGradient>
     </Box>
