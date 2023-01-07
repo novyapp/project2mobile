@@ -17,7 +17,7 @@ const Login = (props: Props) => {
       <LinearGradient
         style={{ flex: 1 }}
         // Background Linear Gradient
-        colors={["transparent", "rgba(0,26,43,1)"]}
+        colors={["transparent", "#cc520e"]}
       >
         <Box justifyContent="center" alignItems="center">
           <Image
