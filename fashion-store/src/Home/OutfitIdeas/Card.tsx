@@ -33,7 +33,6 @@ const Card = ({ onSwipe, aIndex, index, source, step }: CardProps) => {
   const translateY = useSharedValue(0);
   const translateX = useSharedValue(0);
   const position = useDerivedValue(() => index * step - aIndex.value);
-  const imageScale = mix(position.value, 1, 0.5);
 
   const onGestureEvent = useAnimatedGestureHandler({
     onStart: (_, ctx: { x: number; y: number }) => {
