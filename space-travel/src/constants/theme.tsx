@@ -4,13 +4,18 @@ import {
   createTheme,
   useTheme as useReTheme,
 } from "@shopify/restyle";
+import { Dimensions } from "react-native";
+
+const { height, width } = Dimensions.get("window");
 
 export const theme = createTheme({
   colors: {
-    primary: "#2CB9B0",
-    primaryLight: "#E7F9F7",
-    secondary: "#0C0D34",
-    danger: "#FF0058",
+    primary: "#d62d30",
+    secondary: "#17a4b8",
+    text: "#e0e4e5",
+    danger: "#d80000",
+    body: "#2c3437",
+    black: "#000",
   },
   spacing: {
     xs: 4,
@@ -28,17 +33,22 @@ export const theme = createTheme({
   },
   textVariants: {
     defaults: {
-      fontFamily: "SFProDisplay-Regular",
+      fontFamily: "Helvetica-Bold",
       fontSize: 16,
       lineHeight: 24,
-      color: "body",
     },
     hero: {
       fontSize: 80,
-      fontFamily: "SFProDisplay-Bold",
-      color: "white",
+      color: "primary",
       textAlign: "center",
       lineHeight: 80,
+    },
+    button: {
+      fontSize: 16,
+      textAlign: "center",
+      fontFamily: "Helvetica-Regular",
+      lineHeight: 30,
+      color: "text",
     },
   },
   breakpoints: {
@@ -46,9 +56,14 @@ export const theme = createTheme({
     tablet: 768,
   },
 });
+
 export type Theme = typeof theme;
 export const Text = createText<Theme>();
 export const Box = createBox<Theme>();
+export const SIZES = {
+  width,
+  height,
+};
 
 export const useTheme = () => useReTheme<Theme>();
 //export default theme;

@@ -1,14 +1,46 @@
-import { View, Text } from "react-native";
 import React from "react";
+import { Box, SIZES } from "../../../constants";
+import { Image } from "react-native";
+import { Button } from "../../../components";
+import { AuthNavigationProps } from "../../../@types/navigation";
 
-type Props = {};
-export const assets = [];
+export const assets = [
+  require("../../../../assets/images/logo.png"),
+  require("../../../../assets/images/name.png"),
+];
 
-const Onboarding = (props: Props) => {
+const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding">) => {
   return (
-    <View>
-      <Text>Onboarding</Text>
-    </View>
+    <Box
+      justifyContent="center"
+      alignItems="center"
+      flex={1}
+      backgroundColor="black"
+    >
+      <Box justifyContent="center" alignItems="center" flex={0.7}>
+        <Image
+          source={assets[0]}
+          resizeMode="contain"
+          style={{
+            width: SIZES.width * 0.8,
+            height: 300,
+          }}
+        />
+        <Image
+          source={assets[1]}
+          resizeMode="contain"
+          style={{
+            width: SIZES.width * 0.5,
+            height: 70,
+          }}
+        />
+      </Box>
+      <Button
+        variant="default"
+        label="Let's get startet!"
+        onPress={() => navigation.navigate("Login")}
+      />
+    </Box>
   );
 };
 
