@@ -1,5 +1,7 @@
 # Designs to React Native
 
+Repository with React Native learning projects.
+
 ## Table of Contents
 
 | ID    | Project                                                                                  | Preview                                                                                                                                                                                                                                                                                                                                                                                        | Inspiration                                                                                            | No. of Screens |

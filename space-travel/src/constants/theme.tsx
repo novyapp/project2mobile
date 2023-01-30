@@ -16,6 +16,8 @@ export const theme = createTheme({
     danger: "#d80000",
     body: "#2c3437",
     black: "#000",
+    mars: "#cc520e",
+    earth: "#25c9ef",
   },
   spacing: {
     xs: 4,
@@ -46,6 +48,19 @@ export const theme = createTheme({
     button: {
       fontSize: 16,
       textAlign: "center",
+      fontFamily: "Helvetica-Regular",
+      lineHeight: 30,
+      color: "text",
+    },
+    title: {
+      fontSize: 30,
+      fontFamily: "Helvetica-Bold",
+      lineHeight: 36,
+      color: "text",
+    },
+    text: {
+      fontSize: 16,
+
       fontFamily: "Helvetica-Regular",
       lineHeight: 30,
       color: "text",

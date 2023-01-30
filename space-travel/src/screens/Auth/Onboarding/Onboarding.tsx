@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Box, SIZES, Text } from "../../../constants";
 
 import { AuthNavigationProps } from "../../../@types/navigation";
-import { Mars, Moon, Stars, planets } from "./planets";
+import { Moon, planets } from "./planets";
 import { LinearGradient } from "expo-linear-gradient";
 
-export const assets = [
-  require("../../../../assets/images/logo.png"),
-  require("../../../../assets/images/name.png"),
-];
+import { Animated } from "react-native";
+import PlanetItem from "./PlanetItem";
+import Pagination from "./Pagination";
+
+export const assets = [];
 
 const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding">) => {
   const { width, height } = SIZES;
@@ -17,41 +18,65 @@ const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding">) => {
   const mainPlanetBottom = mainPlanetSize * 0.3;
   const mainPlanetRight = mainPlanetSize * 0.1;
 
-  const bgPlanetSize = width * 0.5;
-  const bgPlanetBottom = mainPlanetSize * -0.35;
-  const bgPlanetRight = mainPlanetSize * 0.05;
-
-  console.log(mainPlanetBottom, SIZES.width);
+  const scrollX = useRef(new Animated.Value(0)).current;
 
   return (
-    <Box flex={1} backgroundColor="black">
+    <Box flex={1} width={width} backgroundColor="black">
       <LinearGradient
         style={{ flex: 1 }}
-        start={{ x: 0.2, y: 0.5 }}
+        start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
-        locations={[0.0, 0.699, 0.999]}
+        locations={[0.0, 0.899]}
         // Background Linear Gradient
-        colors={["transparent", "rgba(204,82,14,0.4)", "rgba(204,82,14,0.7)"]}
+        colors={["transparent", "rgba(37,37,37,1)"]}
       >
-        <Box flex={0.5} alignItems="center" justifyContent="center">
-          <Text variant="hero">SPACER</Text>
-          <Text>Get There</Text>
-          <Text>everything is possible with space</Text>
+        <Animated.FlatList
+          horizontal
+          data={planets}
+          scrollEventThrottle={16}
+          snapToAlignment="start"
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => `Planet-${item.id}`}
+          renderItem={({ item, index }) => (
+            <PlanetItem item={item} index={index} scrollX={scrollX} />
+          )}
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+            { useNativeDriver: false }
+          )}
+        />
+
+        {/* Header Section */}
+
+        <Box position="absolute" top={height * 0.15}>
+          {/* Logo */}
+          <Box
+            flexDirection="row"
+            justifyContent="center"
+            alignItems="center"
+            width={width}
+          >
+            <Box>
+              <Text variant="title" marginRight="m">
+                SPACER
+              </Text>
+            </Box>
+            <Box width={100}>
+              <Moon />
+            </Box>
+          </Box>
+
+          {/* Title Descripction */}
+          <Box flexDirection="column" paddingHorizontal="xl" marginTop="xl">
+            <Text variant="title">Get to </Text>
+            <Text variant="text">everything is possible with spacer</Text>
+          </Box>
+
+          {/* Pagination */}
+          <Pagination scrollX={scrollX} />
         </Box>
 
-        <Box position="absolute" top={0} right={0} width={width} height={width}>
-          <Stars />
-        </Box>
-
-        <Box
-          position="absolute"
-          bottom={-bgPlanetBottom}
-          right={-bgPlanetRight}
-          width={bgPlanetSize}
-          height={bgPlanetSize}
-        >
-          <Mars />
-        </Box>
+        {/* Moon position */}
         <Box
           position="absolute"
           bottom={-mainPlanetBottom}

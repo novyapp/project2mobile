@@ -1,6 +1,10 @@
 import * as React from "react";
 import Svg, { Defs, G, Path, Circle, Rect } from "react-native-svg";
 
+interface StarsProp {
+  color: string;
+}
+
 const Mars = () => (
   <Svg viewBox="0 0 312.88 312.88">
     <Defs></Defs>
@@ -126,21 +130,21 @@ const Moon = () => (
   </Svg>
 );
 
-const Stars = () => (
+const Stars = ({ color }: StarsProp) => (
   <Svg viewBox="0 0 586.18 505.1">
     <G id="Layer_1-2" data-name="Layer 1">
       <Circle opacity={0.3} fill="#fff" cx={414.6} cy={62.19} r={7.66} />
-      <Circle opacity={0.5} fill="#fff" cx={308.57} cy={134.96} r={4.6} />
-      <Circle fill="#fff" cx={377.46} cy={155.26} r={5.74} />
-      <Circle opacity={0.3} fill="#fff" cx={228.86} cy={124.62} r={5.74} />
+      <Circle opacity={0.5} fill={color} cx={308.57} cy={134.96} r={4.6} />
+      <Circle fill={color} cx={377.46} cy={155.26} r={5.74} />
+      <Circle opacity={0.3} fill={color} cx={228.86} cy={124.62} r={5.74} />
       <Circle fill="#fff" cx={231.73} cy={46.68} r={2.87} />
-      <Circle fill="#fff" cx={364.05} cy={276.66} r={7.66} opacity={0.2} />
-      <Circle opacity={0.3} fill="#fff" cx={580.82} cy={190.11} r={5.36} />
-      <Circle opacity={0.1} fill="#fff" cx={570.09} cy={66.02} r={3.83} />
-      <Circle fill="#fff" cx={463.12} cy={115.3} r={3.57} />
-      <Circle opacity={0.5} fill="#fff" cx={486.6} cy={251.13} r={8.68} />
-      <Circle opacity={0.4} fill="#fff" cx={299.32} cy={349.7} r={4.34} />
-      <Circle opacity={0.7} fill="#fff" cx={225.99} cy={279.53} r={2.87} />
+      <Circle fill={color} cx={364.05} cy={276.66} r={7.66} opacity={0.2} />
+      <Circle opacity={0.3} fill={color} cx={580.82} cy={190.11} r={5.36} />
+      <Circle opacity={0.1} fill={color} cx={570.09} cy={66.02} r={3.83} />
+      <Circle fill={color} cx={463.12} cy={115.3} r={3.57} />
+      <Circle opacity={0.5} fill={color} cx={486.6} cy={251.13} r={8.68} />
+      <Circle opacity={0.4} fill={color} cx={299.32} cy={349.7} r={4.34} />
+      <Circle opacity={0.7} fill={color} cx={225.99} cy={279.53} r={2.87} />
       <Circle opacity={0.4} cx={424.95} cy={353.38} r={2.68} />
       <Circle opacity={0.7} fill="#fff" cx={530.65} cy={345.21} r={2.68} />
       <Circle opacity={0.5} fill="#fff" cx={573.92} cy={465.66} r={5.55} />
@@ -169,7 +173,7 @@ const Stars = () => (
       <Circle opacity={0.5} fill="#fff" cx={54.88} cy={296.76} r={8.68} />
       <Circle opacity={0.7} fill="#fff" cx={98.93} cy={390.85} r={2.68} />
       <Path
-        fill="#fff"
+        fill={color}
         d="m46.4 214.99 2.22 4.07s.05.07.09.09l4.07 2.22c.16.08.16.31 0 .39l-4.07 2.22s-.07.05-.09.09l-2.22 4.07c-.08.16-.31.16-.39 0l-2.22-4.07s-.05-.07-.09-.09l-4.07-2.22a.218.218 0 0 1 0-.39l4.07-2.22s.07-.05.09-.09l2.22-4.07c.08-.16.31-.16.39 0Z"
       />
       <Path
@@ -232,6 +236,7 @@ const planets = [
     id: 1,
     name: "Mars",
     color: "#cc520e",
+    bgColor: "rgba(37,37,37,1)",
     source: (
       <Svg viewBox="0 0 312.88 312.88">
         <Defs></Defs>
@@ -321,10 +326,12 @@ const planets = [
       </Svg>
     ),
   },
+
   {
     id: 2,
     name: "Earth",
     color: "#25c9ef",
+    bgColor: "rgba(13,28,67,1)",
     source: (
       <Svg viewBox="0 0 312.88 312.88">
         <Defs></Defs>
